@@ -1,0 +1,45 @@
+<style type=""text/css"">
+table,th,td{
+	border: 0px solid #E3E3E3;
+	background-color: #FFFFFF;
+}
+table{
+	border-spacing: 3px;
+	width:90%;
+	border-radius: 0px;
+	background-color: #C3C3C3;
+}   
+th{
+	text-align: center; 
+	background-color: #F0F0F0;
+	border-radius: 0px;
+}
+	._1 {
+ 		width:20%;
+	}
+	._2{
+		width:50%;
+	}
+
+td {
+	text-align: center; 
+	width: auto;
+}
+</style>
+<table class="_"><tbody><tr>
+<th class="_0">No.</th>
+<th class="_1">Process Name</th>
+<th class="_2">Filter By</th>
+<th class="_3">Filter Text</th>
+<th class="_4">From</th>
+<th class="_5">Date Time</th>
+</tr>
+<tr>
+<td>No.</td>
+<td>Process Name</td>
+<td>Filter By</td>
+<td>Filter Text</td>
+<td>From</td>
+<td>Date Time</td>
+</tr>
+</tbody></table>
