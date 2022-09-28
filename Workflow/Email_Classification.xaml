@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>848.8,3739.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>910.4,3739.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Email_Classification_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="43">
@@ -93,7 +93,6 @@
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Database</AssemblyReference>
       <AssemblyReference>System.Linq.Async</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Email_Classification" sap:VirtualizedContainerService.HintSize="859.2,3674.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -113,7 +112,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <umab:ExchangeApplicationCard SharedMailbox="{x:Null}" Account="aphiruth.s@baraadv.co.th" ConnectionAccountName="" DisplayName="Use Outlook 365" EmailAddress="aphiruth.s@baraadv.co.th" sap:VirtualizedContainerService.HintSize="817.6,3581.6" sap2010:WorkflowViewState.IdRef="ExchangeApplicationCard_1" UseConnectionService="False">
+    <umab:ExchangeApplicationCard SharedMailbox="{x:Null}" Account="Auto_Robot@HongsaPower.com" ConnectionAccountName="" DisplayName="Use Outlook 365" EmailAddress="Auto_Robot@HongsaPower.com" sap:VirtualizedContainerService.HintSize="817.6,3581.6" sap2010:WorkflowViewState.IdRef="ExchangeApplicationCard_1" UseConnectionService="False">
       <umab:ExchangeApplicationCard.ApplicationId>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
@@ -375,43 +374,19 @@
                                             </sap:WorkflowViewStateService.ViewState>
                                             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Add ClassifiedEmailListsTable " sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Structure\ClassifiedEmailListsTable.xaml">
                                               <ui:InvokeWorkflowFile.Arguments>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strProcessName">
-                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRule.Item(&quot;PROCESS_NAME&quot;).ToString" />
-                                                </InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strMailTo">
-                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="(CurrentMail.To.AsText+&quot;;&quot;+CurrentMail.CC.AsText).Trim(&quot;;&quot;c)" />
-                                                </InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strMailFrom">
-                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentMail.From.Address" />
-                                                </InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strMailSubject">
-                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentMail.Subject.ToString" />
-                                                </InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strMailMessage">
-                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentMail.Body.ToString" />
-                                                </InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strUpdateDate">
-                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strUpdateDate" />
-                                                </InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strMailFilterBy">
-                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRule.Item(&quot;FILTER_TYPE&quot;).ToString" />
-                                                </InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">
-                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRule.Item(&quot;FOLDER_NAME&quot;).ToString" />
-                                                </InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strFilterText">
-                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRule.Item(&quot;FILTER_TEXT&quot;).ToString" />
-                                                </InArgument>
-                                                <InArgument x:TypeArguments="x:Int32" x:Key="in_intMailIndex">
-                                                  <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="intMailIndex" />
-                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strProcessName">[CurrentRule.Item("PROCESS_NAME").ToString]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strMailTo">[(CurrentMail.To.AsText+";"+CurrentMail.CC.AsText).Trim(";"c)]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strMailFrom">[CurrentMail.From.Address]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strMailSubject">[CurrentMail.Subject.ToString]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strMailMessage">[CurrentMail.Body.ToString]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strUpdateDate">[strUpdateDate]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strMailFilterBy">[CurrentRule.Item("FILTER_TYPE").ToString]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">[CurrentRule.Item("FOLDER_NAME").ToString]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strFilterText">[CurrentRule.Item("FILTER_TEXT").ToString]</InArgument>
+                                                <InArgument x:TypeArguments="x:Int32" x:Key="in_intMailIndex">[intMailIndex]</InArgument>
                                                 <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_ROWMATCH" />
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_Method">
-                                                  <Literal x:TypeArguments="x:String">Add</Literal>
-                                                </InArgument>
-                                                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="inout_dtClassifiedEmailLists">
-                                                  <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtClassifiedEmailLists" />
-                                                </InOutArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Method">Add</InArgument>
+                                                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="inout_dtClassifiedEmailLists">[dtClassifiedEmailLists]</InOutArgument>
                                               </ui:InvokeWorkflowFile.Arguments>
                                             </ui:InvokeWorkflowFile>
                                           </Sequence>
@@ -619,42 +594,18 @@
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Add ClassifiedEmailListsTable " sap:VirtualizedContainerService.HintSize="475.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Structure\ClassifiedEmailListsTable.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_strProcessName">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strNotMatch" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_strMailTo">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="(CurrentMail.To.AsText+&quot;;&quot;+CurrentMail.CC.AsText).Trim(&quot;;&quot;c)" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_strMailFrom">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentMail.From. Address" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_strMailSubject">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentMail.Subject.ToString" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_strMailMessage">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentMail.Body.ToString" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_strUpdateDate">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strUpdateDate" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_strMailFilterBy">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strNotMatch" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strUnknownFolder" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_strFilterText">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strNotMatch" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="in_intMailIndex">
-                                <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="intMailIndex" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_Method">
-                                <Literal x:TypeArguments="x:String">Add</Literal>
-                              </InArgument>
-                              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="inout_dtClassifiedEmailLists">
-                                <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtClassifiedEmailLists" />
-                              </InOutArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strProcessName">[strNotMatch]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strMailTo">[(CurrentMail.To.AsText+";"+CurrentMail.CC.AsText).Trim(";"c)]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strMailFrom">[CurrentMail.From. Address]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strMailSubject">[CurrentMail.Subject.ToString]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strMailMessage">[CurrentMail.Body.ToString]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strUpdateDate">[strUpdateDate]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strMailFilterBy">[strNotMatch]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">[strUnknownFolder]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strFilterText">[strNotMatch]</InArgument>
+                              <InArgument x:TypeArguments="x:Int32" x:Key="in_intMailIndex">[intMailIndex]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_Method">Add</InArgument>
+                              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="inout_dtClassifiedEmailLists">[dtClassifiedEmailLists]</InOutArgument>
                               <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_ROWMATCH" />
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>

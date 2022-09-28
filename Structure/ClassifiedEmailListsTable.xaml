@@ -17,7 +17,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>842.4,701.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>910.4,701.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AddDataRowClassifiedEmailLists_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="70">
@@ -61,7 +61,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -93,6 +93,8 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
@@ -129,7 +131,7 @@
           <av:Size x:Key="ShapeSize">200,68.8</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="AddDataRowClassifiedEmailLists" sap:VirtualizedContainerService.HintSize="601.6,1176" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence DisplayName="AddDataRowClassifiedEmailLists" sap:VirtualizedContainerService.HintSize="601.6,1418.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
         <Sequence.Variables>
           <Variable x:TypeArguments="s:String[]" Name="arrayRow" />
           <Variable x:TypeArguments="x:Int32" Name="intIndex" />
@@ -168,44 +170,58 @@
             </Sequence>
           </If.Else>
         </If>
-        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[intIndex]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="560,466.4" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[arrayRow]">
-          <ui:ForEach.Body>
-            <ActivityAction x:TypeArguments="x:String">
-              <ActivityAction.Argument>
-                <DelegateInArgument x:TypeArguments="x:String" Name="input" />
-              </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,341.6" sap2010:WorkflowViewState.IdRef="Sequence_24">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[input.Count &gt; inout_dtClassifiedEmailLists.Columns(intIndex).MaxLength]" sap:VirtualizedContainerService.HintSize="483.2,248.8" sap2010:WorkflowViewState.IdRef="If_5">
-                  <If.Then>
-                    <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_3">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[input]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[input.Substring(0, inout_dtClassifiedEmailLists.Columns(intIndex).MaxLength-3)+"..."]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                  </If.Then>
-                  <If.Else>
-                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_25">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </Sequence>
-                  </If.Else>
-                </If>
-              </Sequence>
-            </ActivityAction>
-          </ui:ForEach.Body>
-        </ui:ForEach>
-        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ in_strProcessName,in_strMailTo, in_strMailFrom , in_strMailSubject , in_strMailMessage, in_strUpdateDate , in_strMailFilterBy,in_FolderName , in_strFilterText , in_intMailIndex.ToString}]" DataTable="[inout_dtClassifiedEmailLists]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="560,188" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+        <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[intIndex]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">0</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="560,608.8" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+          <ui:InterruptibleWhile.Body>
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,441.6" sap2010:WorkflowViewState.IdRef="Sequence_24">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If Condition="[arrayRow(intIndex).Count &gt;= inout_dtClassifiedEmailLists.Columns(intIndex).MaxLength]" sap:VirtualizedContainerService.HintSize="483.2,248.8" sap2010:WorkflowViewState.IdRef="If_5">
+                <If.Then>
+                  <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[arrayRow(intIndex)]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[arrayRow(intIndex).Substring(0, inout_dtClassifiedEmailLists.Columns(intIndex).MaxLength-3)+"..."]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_25">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Sequence>
+                </If.Else>
+              </If>
+              <Assign sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Int32">[intIndex]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Int32">[intIndex+1]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </ui:InterruptibleWhile.Body>
+          <ui:InterruptibleWhile.Condition>
+            <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="intIndex &lt; arrayRow.Count" />
+          </ui:InterruptibleWhile.Condition>
+        </ui:InterruptibleWhile>
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[arrayRow]" DataTable="[inout_dtClassifiedEmailLists]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="560,188" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
       </Sequence>
     </FlowStep>
     <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID4" DisplayName="Flow Switch" Expression="[in_Method]" sap:VirtualizedContainerService.HintSize="70.4,87.2" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_2">
@@ -332,7 +348,7 @@
                       <OutArgument x:TypeArguments="x:Int32">[columnNew.MaxLength]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Int32">100</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">255</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -438,13 +454,13 @@
             </ui:MultipleAssign>
             <AddToCollection x:TypeArguments="sd:DataColumn" Collection="[listColumnTable]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="430.4,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_9" Item="[columnNew]" />
           </Sequence>
-          <Sequence DisplayName="Add Column From" sap:VirtualizedContainerService.HintSize="472,68.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <Sequence DisplayName="Add Column From" sap:VirtualizedContainerService.HintSize="472,444" sap2010:WorkflowViewState.IdRef="Sequence_13">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataColumn" Name="columnNew" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -512,13 +528,13 @@
             </ui:MultipleAssign>
             <AddToCollection x:TypeArguments="sd:DataColumn" Collection="[listColumnTable]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="430.4,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_2" Item="[columnNew]" />
           </Sequence>
-          <Sequence DisplayName="Add Column Subject" sap:VirtualizedContainerService.HintSize="472,68.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <Sequence DisplayName="Add Column Subject" sap:VirtualizedContainerService.HintSize="472,444" sap2010:WorkflowViewState.IdRef="Sequence_14">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataColumn" Name="columnNew" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -546,7 +562,7 @@
                       <OutArgument x:TypeArguments="x:Int32">[columnNew.MaxLength]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Int32">200</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">255</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
@@ -660,13 +676,13 @@
             </ui:MultipleAssign>
             <AddToCollection x:TypeArguments="sd:DataColumn" Collection="[listColumnTable]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="430.4,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_4" Item="[columnNew]" />
           </Sequence>
-          <Sequence DisplayName="Add Column UpdateDate" sap:VirtualizedContainerService.HintSize="472,68.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
+          <Sequence DisplayName="Add Column UpdateDate" sap:VirtualizedContainerService.HintSize="472,444" sap2010:WorkflowViewState.IdRef="Sequence_16">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataColumn" Name="columnNew" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -734,13 +750,13 @@
             </ui:MultipleAssign>
             <AddToCollection x:TypeArguments="sd:DataColumn" Collection="[listColumnTable]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="430.4,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_5" Item="[columnNew]" />
           </Sequence>
-          <Sequence DisplayName="Add Column Filter By" sap:VirtualizedContainerService.HintSize="472,68.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <Sequence DisplayName="Add Column Filter By" sap:VirtualizedContainerService.HintSize="472,444" sap2010:WorkflowViewState.IdRef="Sequence_17">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataColumn" Name="columnNew" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -808,13 +824,13 @@
             </ui:MultipleAssign>
             <AddToCollection x:TypeArguments="sd:DataColumn" Collection="[listColumnTable]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="430.4,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_6" Item="[columnNew]" />
           </Sequence>
-          <Sequence DisplayName="Add Column Folder" sap:VirtualizedContainerService.HintSize="472,68.8" sap2010:WorkflowViewState.IdRef="Sequence_20">
+          <Sequence DisplayName="Add Column Folder" sap:VirtualizedContainerService.HintSize="472,444" sap2010:WorkflowViewState.IdRef="Sequence_20">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataColumn" Name="columnNew" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -882,13 +898,13 @@
             </ui:MultipleAssign>
             <AddToCollection x:TypeArguments="sd:DataColumn" Collection="[listColumnTable]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="430.4,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_8" Item="[columnNew]" />
           </Sequence>
-          <Sequence DisplayName="Add Column Filter Text" sap:VirtualizedContainerService.HintSize="472,68.8" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <Sequence DisplayName="Add Column Filter Text" sap:VirtualizedContainerService.HintSize="472,444" sap2010:WorkflowViewState.IdRef="Sequence_18">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataColumn" Name="columnNew" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>

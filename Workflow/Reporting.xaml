@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>842.4,7220</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>910.4,7220</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Reporting_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -435,7 +435,7 @@
               </ActivityAction>
             </ui:ModifyText.Body>
           </ui:ModifyText>
-          <umab:ExchangeApplicationCard ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" SharedMailbox="{x:Null}" Account="aphiruth.s@baraadv.co.th" DisplayName="Use Outlook 365" EmailAddress="aphiruth.s@baraadv.co.th" sap:VirtualizedContainerService.HintSize="513.6,1460" sap2010:WorkflowViewState.IdRef="ExchangeApplicationCard_1" UseConnectionService="False">
+          <umab:ExchangeApplicationCard ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" SharedMailbox="{x:Null}" Account="Auto_Robot@HongsaPower.com" DisplayName="Use Outlook 365" EmailAddress="Auto_Robot@HongsaPower.com" sap:VirtualizedContainerService.HintSize="513.6,1460" sap2010:WorkflowViewState.IdRef="ExchangeApplicationCard_1" UseConnectionService="False">
             <umab:ExchangeApplicationCard.ApplicationId>
               <InArgument x:TypeArguments="x:String">
                 <Literal x:TypeArguments="x:String" Value="" />
