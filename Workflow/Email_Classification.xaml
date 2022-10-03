@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>910.4,3739.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>864,4688.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Email_Classification_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="43">
@@ -95,7 +95,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Email_Classification" sap:VirtualizedContainerService.HintSize="859.2,3674.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Email_Classification" sap:VirtualizedContainerService.HintSize="859.2,4624" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtClassifiedEmailLists" />
       <Variable x:TypeArguments="x:String" Name="strSQLDateFormat" />
@@ -112,7 +112,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <umab:ExchangeApplicationCard SharedMailbox="{x:Null}" Account="Auto_Robot@HongsaPower.com" ConnectionAccountName="" DisplayName="Use Outlook 365" EmailAddress="Auto_Robot@HongsaPower.com" sap:VirtualizedContainerService.HintSize="817.6,3581.6" sap2010:WorkflowViewState.IdRef="ExchangeApplicationCard_1" UseConnectionService="False">
+    <umab:ExchangeApplicationCard SharedMailbox="{x:Null}" Account="Auto_Robot@HongsaPower.com" ConnectionAccountName="" DisplayName="Use Outlook 365" EmailAddress="Auto_Robot@HongsaPower.com" sap:VirtualizedContainerService.HintSize="817.6,4531.2" sap2010:WorkflowViewState.IdRef="ExchangeApplicationCard_1" UseConnectionService="False">
       <umab:ExchangeApplicationCard.ApplicationId>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
@@ -123,7 +123,7 @@
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="um:IMailQuickHandle" Name="Exchange" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="784,3356.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="784,4306.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Int32" Name="intMailIndex" />
               <Variable x:TypeArguments="x:String" Name="strNotMatch" />
@@ -254,7 +254,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ModifyDate>
-            <umab:ForEachEmailX MailFilter="{x:Null}" DisplayName="For Each Email" sap:VirtualizedContainerService.HintSize="742.4,2320" sap2010:WorkflowViewState.IdRef="ForEachEmailX_1" IncludeSubfolders="False" Mails="[Exchange.Folder(strDefaultInbox)]" NumberOfEmailsLimit="100" UnreadOnly="False" WithAttachmentsOnly="False">
+            <umab:ForEachEmailX MailFilter="{x:Null}" DisplayName="For Each Email" sap:VirtualizedContainerService.HintSize="742.4,3269.6" sap2010:WorkflowViewState.IdRef="ForEachEmailX_1" IncludeSubfolders="False" Mails="[Exchange.Folder(strDefaultInbox)]" NumberOfEmailsLimit="100" UnreadOnly="False" WithAttachmentsOnly="False">
               <umab:ForEachEmailX.Body>
                 <ActivityAction x:TypeArguments="snm:MailMessage, x:Int32">
                   <ActivityAction.Argument1>
@@ -263,7 +263,7 @@
                   <ActivityAction.Argument2>
                     <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                   </ActivityAction.Argument2>
-                  <Sequence DisplayName="Do Email Loop" sap:VirtualizedContainerService.HintSize="708.8,2084" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <Sequence DisplayName="Do Email Loop" sap:VirtualizedContainerService.HintSize="708.8,3033.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:Boolean" Name="blClassifiedRule" />
                       <Variable x:TypeArguments="sd:DataRow" Name="rowFilterMatch" />
@@ -578,10 +578,10 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:ForEachRow>
-                    <If Condition="[not blClassifiedRule]" DisplayName="Assign Not Match" sap:VirtualizedContainerService.HintSize="667.2,52.8" sap2010:WorkflowViewState.IdRef="If_7">
+                    <If Condition="[not blClassifiedRule]" DisplayName="Assign Not Match" sap:VirtualizedContainerService.HintSize="667.2,1002.4" sap2010:WorkflowViewState.IdRef="If_7">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>

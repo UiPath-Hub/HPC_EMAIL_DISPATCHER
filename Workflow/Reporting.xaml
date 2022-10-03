@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>910.4,7220</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>656,7220</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Reporting_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -342,16 +342,30 @@
           </ui:ForEachRow>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Convert Success Mail Daily Table to HTML" sap:VirtualizedContainerService.HintSize="513.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Function\TableToHTML.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DataTable">[dtEMDISSuccessDailyReport]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_TableName">SuccessDaily</InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="out_HTML">[strSuccessMailDailyTableHTML]</OutArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DataTable">
+                <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtEMDISSuccessDailyReport" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_TableName">
+                <Literal x:TypeArguments="x:String">SuccessDaily</Literal>
+              </InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_HTML">
+                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strSuccessMailDailyTableHTML" />
+              </OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_CSS" />
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Convert Fail Mail Daily Table to HTML" sap:VirtualizedContainerService.HintSize="513.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Function\TableToHTML.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DataTable">[dtEMDISFailDailyReport]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_TableName">FailDaily</InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="out_HTML">[strFailMailDailyTableHTML]</OutArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DataTable">
+                <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtEMDISFailDailyReport" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_TableName">
+                <Literal x:TypeArguments="x:String">FailDaily</Literal>
+              </InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_HTML">
+                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strFailMailDailyTableHTML" />
+              </OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_CSS" />
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:CopyFile ContinueOnError="{x:Null}" Destination="[strEM_DIS_DailyReportPath+&quot;Del.docx&quot;]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="513.6,160" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[strEM_DIS_DailyReportPath]" />
