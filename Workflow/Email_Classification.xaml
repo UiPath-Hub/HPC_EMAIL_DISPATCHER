@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>864,4788.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>848.8,4788.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Email_Classification_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="43">
@@ -57,7 +57,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="70">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -321,7 +321,7 @@
                                     <av:PointCollection x:Key="ConnectorLocation">70,230 40,230 40,550.44 70,550.44</av:PointCollection>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <If Condition="[((CurrentMail.To.AsText.Trim.ToLower.Contains(CurrentRule.Item(&quot;FILTER_TEXT&quot;).ToString.ToLower)) Or (CurrentMail.CC.AsText.Trim.ToLower.Contains(CurrentRule.Item(&quot;FILTER_TEXT&quot;).ToString.ToLower)))]" DisplayName="Assign True" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_1">
+                                <If Condition="[((CurrentMail.To.AsText.Replace(&quot; &quot;c,String.Empty).Trim.ToLower.Contains(CurrentRule.Item(&quot;FILTER_TEXT&quot;).ToString.ToLower)) Or (CurrentMail.CC.AsText.Replace(&quot; &quot;c,String.Empty).Trim.ToLower.Contains(CurrentRule.Item(&quot;FILTER_TEXT&quot;).ToString.ToLower)))]" DisplayName="Assign True" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_1">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -430,7 +430,7 @@
                                     <av:PointCollection x:Key="ConnectorLocation">70,310 40,310 40,550.44 70,550.44</av:PointCollection>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <If Condition="[CurrentMail.From.Address.Trim.ToLower.Contains(CurrentRule.Item(&quot;FILTER_TEXT&quot;).ToString.ToLower)]" DisplayName="Assign True" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_2">
+                                <If Condition="[CurrentMail.From.Address.Replace(&quot; &quot;c,String.Empty).Trim.ToLower.Contains(CurrentRule.Item(&quot;FILTER_TEXT&quot;).ToString.Replace(&quot; &quot;c,String.Empty).ToLower)]" DisplayName="Assign True" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_2">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -474,7 +474,7 @@
                                     <av:PointCollection x:Key="ConnectorLocation">70,390 40,390 40,550.44 70,550.44</av:PointCollection>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <If Condition="[CurrentMail.Subject.ToString.Trim.ToLower.Contains(CurrentRule.Item(&quot;FILTER_TEXT&quot;).ToString.ToLower)]" DisplayName="Assign True" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_3">
+                                <If Condition="[CurrentMail.Subject.ToString.Replace(&quot; &quot;c,String.Empty).Trim.ToLower.Contains(CurrentRule.Item(&quot;FILTER_TEXT&quot;).ToString.Replace(&quot; &quot;c,String.Empty).ToLower)]" DisplayName="Assign True" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_3">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -518,7 +518,7 @@
                                     <av:PointCollection x:Key="ConnectorLocation">70,470 40,470 40,550.44 70,550.44</av:PointCollection>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <If Condition="[CurrentMail.Body.ToString.Trim.ToLower.Contains(CurrentRule.Item(&quot;FILTER_TEXT&quot;).ToString.ToLower)]" DisplayName="Assign True" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_4">
+                                <If Condition="[CurrentMail.Body.ToString.Replace(&quot; &quot;c,String.Empty).Trim.ToLower.Contains(CurrentRule.Item(&quot;FILTER_TEXT&quot;).ToString.Replace(&quot; &quot;c,String.Empty).ToLower)]" DisplayName="Assign True" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_4">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
